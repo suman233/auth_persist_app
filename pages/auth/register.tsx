@@ -13,7 +13,6 @@ import { emailRegex } from "@/lib/functions/_helpers.lib";
 import validationText from "@/json/messages/validationText";
 import { useMutation } from "@tanstack/react-query";
 import { signUpMutation } from "@/api/functions/user.api";
-import { userData } from "@/types/common.type";
 import { toast } from "sonner";
 
 const schema = yup

@@ -1,7 +1,6 @@
 import StorySec from "@/components/StorySec/StorySec";
 import assest from "@/json/assest";
 import { cardList } from "@/json/mock/cardlist.mock";
-import Wrapper from "@/layout/wrapper/Wrapper";
 import Typography from "@mui/material/Typography";
 
 export default function Home() {

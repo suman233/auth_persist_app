@@ -19,8 +19,6 @@ import { toast } from "sonner";
 import { useState } from "react";
 import { emailRegex } from "@/lib/functions/_helpers.lib";
 
-const Wrapper = dynamic(() => import("@/layout/wrapper/Wrapper"));
-
 export const forgetPasswordSchema = yup
   .object()
   .shape({

@@ -62,7 +62,7 @@ const Login = () => {
           if (resp.data.status === 200) {
             // console.log("signed", data);
             if (resp?.data) {
-              const { access, ...userData } = resp.data;
+              const { ...userData } = resp.data;
               toast.success(resp?.data?.message);
               setCookie("token", userData.token);
               setCookie("userdata", userData);
