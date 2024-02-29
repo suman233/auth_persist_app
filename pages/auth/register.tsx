@@ -41,7 +41,7 @@ const Register = () => {
     resolver: yupResolver(schema)
   });
 
-  const { mutate, data, error } = useMutation({ mutationFn: signUpMutation });
+  const { mutate } = useMutation({ mutationFn: signUpMutation });
 
   const onSubmit = (data: signUpSchema) => {
   

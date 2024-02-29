@@ -2,7 +2,6 @@ import InputFieldCommon from "@/ui/CommonInput/CommonInput";
 import CustomButtonPrimary from "@/ui/CustomButtons/CustomButtonPrimary";
 import { Avatar, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
-import dynamic from "next/dynamic";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import * as yup from "yup";
 import validationText from "@/json/messages/validationText";

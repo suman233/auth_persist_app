@@ -1,10 +1,9 @@
 import { GetProfileDetails } from "@/api/functions/user.api";
-import useUser from "@/hooks/react-query/useUser";
 import { Box, Container, Paper, Typography } from "@mui/material";
 import { useMutation } from "@tanstack/react-query";
 
 const Profile = () => {
-  const { mutate, data, error } = useMutation({
+  const { mutate, data,  } = useMutation({
     mutationFn: GetProfileDetails
   });
   console.log("profile", data);

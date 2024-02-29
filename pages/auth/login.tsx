@@ -1,3 +1,4 @@
+import InputFieldCommon from "@/ui/CommonInput/CommonInput";
 import { loginMutation } from "@/api/functions/user.api";
 import { useAppDispatch } from "@/hooks/redux/useAppDispatch";
 import { useAppSelector } from "@/hooks/redux/useAppSelector";
@@ -5,11 +6,9 @@ import { LFormInput } from "@/interface/common.interface";
 import validationText from "@/json/messages/validationText";
 import { emailRegex } from "@/lib/functions/_helpers.lib";
 import { setAccessToken, setUserData } from "@/reduxtoolkit/slices/userSlice";
-import InputFieldCommon from "@/ui/CommonInput/CommonInput";
 import CustomButtonPrimary from "@/ui/CustomButtons/CustomButtonPrimary";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Box, Typography } from "@mui/material";
-import { Container } from "@mui/system";
+import { Box, Container, Typography } from "@mui/material";
 import { useMutation } from "@tanstack/react-query";
 import { setCookie } from "cookies-next";
 import Link from "next/link";
@@ -47,7 +46,7 @@ const Login = () => {
 
   const { isLoggedIn } = useAppSelector((s) => s.userSlice);
 
-  const { mutate, data, error } = useMutation({
+  const { mutate, data } = useMutation({
     mutationFn: loginMutation
   });
 
