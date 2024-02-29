@@ -71,6 +71,11 @@ const Login = () => {
               router.push("/auth/profile");
             }
           }
+        },
+        onError: (err) => {
+          if (err) {
+            toast.error(err.message);
+          }
         }
       }
     );
@@ -82,10 +87,9 @@ const Login = () => {
     }
   }, [isLoggedIn]);
 
-  if (data?.status === 400) {
-    // @ts-ignore
-    toast.error(data.data.message);
-  }
+  // if (data?.status === 400) {
+  //   toast.error(data.data.message);
+  // }
   return (
     <Container sx={{ mt: 5 }}>
       <Typography variant="h4" sx={{ fontWeight: "bold", textAlign: "center" }}>
