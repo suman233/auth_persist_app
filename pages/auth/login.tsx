@@ -1,23 +1,23 @@
-import validationText from "@/json/messages/validationText";
-import { emailRegex } from "@/lib/functions/_helpers.lib";
-import InputFieldCommon from "@/ui/CommonInput/CommonInput";
-import CustomButtonPrimary from "@/ui/CustomButtons/CustomButtonPrimary";
-import { Box, Typography } from "@mui/material";
-import { Container } from "@mui/system";
-import Link from "next/link";
-import React, { useEffect } from "react";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useRouter } from "next/router";
-import { useMutation } from "@tanstack/react-query";
-import { LFormInput } from "@/interface/common.interface";
-import { useForm } from "react-hook-form";
 import { loginMutation } from "@/api/functions/user.api";
-import { toast } from "sonner";
 import { useAppDispatch } from "@/hooks/redux/useAppDispatch";
 import { useAppSelector } from "@/hooks/redux/useAppSelector";
+import { LFormInput } from "@/interface/common.interface";
+import validationText from "@/json/messages/validationText";
+import { emailRegex } from "@/lib/functions/_helpers.lib";
 import { setAccessToken, setUserData } from "@/reduxtoolkit/slices/userSlice";
+import InputFieldCommon from "@/ui/CommonInput/CommonInput";
+import CustomButtonPrimary from "@/ui/CustomButtons/CustomButtonPrimary";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Box, Typography } from "@mui/material";
+import { Container } from "@mui/system";
+import { useMutation } from "@tanstack/react-query";
 import { setCookie } from "cookies-next";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import * as yup from "yup";
 
 const loginschema = yup
   .object({
@@ -33,7 +33,7 @@ const loginschema = yup
 
 export type logSchema = yup.InferType<typeof loginschema>;
 
-const login = () => {
+const Login = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
 
@@ -138,4 +138,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;
