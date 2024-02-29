@@ -99,7 +99,7 @@ const Login = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <InputFieldCommon
-          type="text"
+          type="email"
           label="Email"
           sx={{ my: 2 }}
           {...register("email")}
