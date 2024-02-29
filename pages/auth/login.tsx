@@ -65,7 +65,7 @@ const login = () => {
               const { access, ...userData } = resp.data;
               toast.success(resp?.data?.message);
               setCookie("token", userData.token);
-              setCookie("userdata", JSON.stringify(userData));
+              setCookie("userdata", userData);
               console.log("Token:-", userData.token);
               dispatch(setAccessToken(userData.token));
               dispatch(setUserData(userData));
@@ -79,7 +79,7 @@ const login = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      router.push("/");
+      router.push("/auth/profile");
     }
   }, [isLoggedIn]);
 
@@ -104,12 +104,16 @@ const login = () => {
           label="Email"
           sx={{ my: 2 }}
           {...register("email")}
+          error={Boolean(errors.email)}
+          helperText={errors.email?.message}
         />
         <InputFieldCommon
           type="password"
           label="Password"
           sx={{ mb: 2 }}
           {...register("password")}
+          error={Boolean(errors.password)}
+          helperText={errors.password?.message}
         />
 
         <CustomButtonPrimary
@@ -125,6 +129,10 @@ const login = () => {
       <Typography sx={{ textAlign: "center", my: 2 }}>
         Don't have an account!!&nbsp;
         <Link href="/auth/register">Create account here</Link>
+      </Typography>
+
+      <Typography sx={{ textAlign: "center", my: 2 }}>
+        <Link href="/auth/reset_password">Forget Password!! Reset Here</Link>
       </Typography>
     </Container>
   );

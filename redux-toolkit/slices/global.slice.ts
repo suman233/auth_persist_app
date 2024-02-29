@@ -7,6 +7,7 @@ const initialState: globalStateInterface = {
 
 const globalSlice = createSlice({
   name: "globalSlice",
+  
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {

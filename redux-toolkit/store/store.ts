@@ -25,7 +25,7 @@ const persistConfig = {
   version: 1,
 };
 
-const _combined = combineReducers(rootReducer); 
+const _combined = combineReducers(rootReducer);
 
 // Middleware
 

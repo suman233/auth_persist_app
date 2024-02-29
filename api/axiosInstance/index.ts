@@ -22,13 +22,13 @@ export const getUserAccessToken = () => {
   return accessToken;
 };
 
-let refreshToken: string | null = null;
-export const setUserRefreshToken = (_refreshToken: typeof accessToken) => {
-  refreshToken = _refreshToken;
-};
-export const getUserRefreshToken = () => {
-  return refreshToken;
-};
+// let refreshToken: string | null = null;
+// export const setUserRefreshToken = (_refreshToken: typeof accessToken) => {
+//   refreshToken = _refreshToken;
+// };
+// export const getUserRefreshToken = () => {
+//   return refreshToken;
+// };
 
 axiosInstance.interceptors.request.use((config) => {
   const token = getUserAccessToken();

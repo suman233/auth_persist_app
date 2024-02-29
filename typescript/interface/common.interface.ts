@@ -1,3 +1,5 @@
+import { userData } from "@/types/common.type";
+
 export enum HttpStatusCode {
   /**
    * The server has received the request headers and the client should proceed to send the request body
@@ -431,7 +433,7 @@ export interface BaseApiResponse {
 
 export type ActiveInactiveStatus = "Inactive" | "Active";
 
-export type UserData = {
+export type IUserData = {
   first_name: string;
   last_name: string;
   fullName: string;
@@ -455,4 +457,13 @@ export type UserData = {
   updatedAt: string;
 } | null;
 
+export interface ILoginResponse extends BaseApiResponse {
+  data: LFormInput;
+}
+export interface IData {
+  personal: IUserData;
+}
+export interface IuserProfileResponse extends BaseApiResponse {
+  data: IData;
+}
 export {};
