@@ -3,7 +3,6 @@ import { checkWindow } from "@/lib/functions/_helpers.lib";
 import dynamic from "next/dynamic";
 
 const Lottie = dynamic(() => import("lottie-react"));
-const Wrapper = dynamic(() => import("@/layout/wrapper/Wrapper"));
 const Container = dynamic(() => import("@mui/material/Container"));
 const Stack = dynamic(() => import("@mui/material/Stack"));
 const Button = dynamic(() => import("@mui/material/Button"));

@@ -7,7 +7,6 @@ import dynamic from "next/dynamic";
 // import CustomButton from "@/ui/Buttons/CustomButton";
 
 const Lottie = dynamic(() => import("lottie-react"));
-const Wrapper = dynamic(() => import("@/layout/wrapper/Wrapper"));
 
 const Index = () => {
   const reload = () => {

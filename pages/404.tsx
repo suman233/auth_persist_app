@@ -5,7 +5,6 @@ import styles from "@/styles/pages/404.module.scss";
 import animationData from "@/json/lottie/404.json";
 
 const Lottie = dynamic(() => import("lottie-react"));
-const Wrapper = dynamic(() => import("@/layout/wrapper/Wrapper"));
 
 
 
