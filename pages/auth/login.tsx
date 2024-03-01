@@ -68,7 +68,7 @@ const Login = () => {
               console.log("Token:-", userData.token);
               dispatch(setAccessToken(userData.token));
               dispatch(setUserData(userData));
-              router.push("/auth/profile");
+              router.push("/profile");
             }
           }
         },

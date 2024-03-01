@@ -19,9 +19,10 @@ const useUser = () => {
 
   const profileDetails = useQuery({
     queryKey: ["userdetails"],
-    queryFn: ({ signal }) => GetProfileDetails(signal),
+    queryFn: GetProfileDetails,
     enabled: isLoggedIn,
-    refetchOnWindowFocus: false,
+    refetchOnWindowFocus: false
+
     // onSuccess: (data) => {
     //   // if (resp.data.status === 200) {
     //   // console.log("signed", data);
@@ -44,8 +45,14 @@ const useUser = () => {
     //   dispatch(logout());
     // }
   });
-  return profileDetails;
 
+  useEffect(() => {
+    if(profileDetails.data){
+      if(profileDetails.data.status===200){
+        dispatch(setUserData(profileDetails.data.data.data))
+      }
+    }
+  }, [profileDetails?.status, profileDetails?.data]);
   //   useEffect(() => {
   //     if (profileDetails?.data) {
   //       if (profileDetails?.data?.status === 401) {
@@ -56,7 +63,7 @@ const useUser = () => {
   //     }
   //   }, [profileDetails?.status, profileDetails?.data]);
 
-  //   return { ...profileDetails };
+  return { ...profileDetails };
   // };
 };
 export default useUser;

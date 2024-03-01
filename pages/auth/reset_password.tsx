@@ -160,12 +160,22 @@ const ForgetPassword = () => {
   return (
     <Container maxWidth="sm" sx={{ my: 4 }}>
       <Box width="50%" margin="auto">
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main", margin: "auto" }}>
+        <Typography
+          variant="h3"
+          textAlign={"center"}
+          sx={{ fontWeight: "bold", color: "black" }}
+        >
+          Reset Your Password
+        </Typography>
+        {/* <Avatar sx={{ m: 1, bgcolor: "secondary.main", margin: "auto" }}>
           <LockOutlinedIcon />
-        </Avatar>
+        </Avatar> */}
         {!isGetOTP ? (
           <>
-            <form onSubmit={handleSubmit(handleForgetPassword)}>
+            <form
+              onSubmit={handleSubmit(handleForgetPassword)}
+              style={{ marginTop: "20px" }}
+            >
               <InputFieldCommon
                 required
                 type="email"
@@ -180,7 +190,8 @@ const ForgetPassword = () => {
                 variant="contained"
                 color="primary"
                 sx={{
-                  margin: "auto"
+                  margin: "auto",
+                  mt:2
                 }}
               >
                 <Typography>Send OTP</Typography>

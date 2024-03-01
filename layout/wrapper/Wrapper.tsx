@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import Seo from "@/components/Seo/Seo";
+import useUser from "@/hooks/react-query/useUser";
 import useOnlineStatus from "@/hooks/utils/useDetectOnline";
 import { WrapperStyle } from "@/styles/StyledComponents/WrapperStyle";
 import { primaryColors } from "@/themes/_muiPalette";
@@ -7,9 +8,10 @@ import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
+import { getCookie } from "cookies-next";
 
 interface wrapperProps {
   children: JSX.Element | JSX.Element[];
@@ -45,7 +47,9 @@ const Wrapper = (props: wrapperProps) => {
   const projectName = "Procell";
 
   useOnlineStatus();
+  const usertoken = getCookie("token");
 
+  
   return (
     <WrapperStyle>
       <Seo

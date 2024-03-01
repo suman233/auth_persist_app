@@ -18,10 +18,10 @@ export const loginMutation = async (body: logSchema) => {
   const res = await axiosInstance.post(endpoints.auth.login, body);
   return res;
 };
-export const GetProfileDetails = async (signal?: AbortSignal) => {
-  const res = await axiosInstance.get<IuserProfileResponse>(
+export const GetProfileDetails = async () => {
+  const res = await axiosInstance.get(
     endpoints.auth.profileDetails,
-    { signal }
+    
   );
   return res;
 };

@@ -29,6 +29,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { getCookie } from "cookies-next";
 import { toast } from "sonner";
+import { useQuery } from "@tanstack/react-query";
+import { GetProfileDetails } from "@/api/functions/user.api";
 
 // const CustomButton = dynamic(() => import("@/ui/Buttons/CustomButton"));
 
@@ -46,7 +48,7 @@ export default function Header() {
     },
     {
       name: "Shop",
-      route: "javascript:void(0)"
+      route: "/shop"
     },
     {
       name: "Contact us",
@@ -100,12 +102,19 @@ export default function Header() {
   // const detectScroll = React.useCallback(() => {
   //   setScroll(window.scrollY > 100);
   // }, []);
+  // const { isLoading, data } = useQuery({
+  //   queryKey: ["profiledetails"],
+  //   queryFn: GetProfileDetails
+  // });
+  // console.log("profile", data);
   const usertoken = getCookie("token");
   console.log("urtoken", usertoken);
 
   React.useEffect(() => {
     setIsLoggedIn(!!usertoken);
   }, [usertoken]);
+
+  React.useEffect(() => {}, [usertoken]);
 
   return (
     <HeaderWrap sx={{ display: "flex" }} className="main_head">
@@ -129,46 +138,50 @@ export default function Header() {
             <Link href="/" className="headerLogo">
               <Image src={assest.logo_img} width={250} height={38} alt="Logo" />
             </Link>
-            {/* {loggedIn ? (
+            {loggedIn ? (
+              <>
+                <Box
+                  sx={{ display: { xs: "none", sm: "block" } }}
+                  className="navbar"
+                >
+                  <CustomButtonPrimary
+                    type="button"
+                    variant="contained"
+                    color="primary"
+                    // onClick={()=>router.push('/auth/profile')}
+                  >
+                    <span>User</span>
+                  </CustomButtonPrimary>
+                </Box>
+                {/* <Box>
+                  <CustomButtonPrimary
+                    type="button"
+                    variant="contained"
+                    color="primary"
+                    onClick={()=>router.push('/auth/profile')}
+                  >
+                    <span>{data?.data?.data.first_name}</span>
+                  </CustomButtonPrimary>
+                </Box> */}
+              </>
+            ) : (
               <Box
                 sx={{ display: { xs: "none", sm: "block" } }}
                 className="navbar"
               >
-                <CustomButtonPrimary
-                  onClick={handleLogout}
-                  type="button"
-                  variant="contained"
-                  color="primary"
-                >
-                  <span>Logout</span>
-                </CustomButtonPrimary>
-
-                {/* <CustomButtonPrimary
-                  type="button"
-                  variant="contained"
-                  color="primary"
-                >
-                  <span>{userData?.email}</span>
-                </CustomButtonPrimary> 
+                {navItems.map((item) => (
+                  <Link
+                    href={item?.route}
+                    key={item?.route}
+                    className={router.pathname === item.route ? "active" : ""}
+                  >
+                    {/* <CustomButton type="button" variant="text"> */}
+                    {item?.name}
+                    {/* </CustomButton> */}
+                  </Link>
+                ))}
               </Box>
-            ) : ( */}
-            <Box
-              sx={{ display: { xs: "none", sm: "block" } }}
-              className="navbar"
-            >
-              {navItems.map((item) => (
-                <Link
-                  href={item?.route}
-                  key={item?.route}
-                  className={router.pathname === item.route ? "active" : ""}
-                >
-                  {/* <CustomButton type="button" variant="text"> */}
-                  {item?.name}
-                  {/* </CustomButton> */}
-                </Link>
-              ))}
-            </Box>
-            {/* )} */}
+            )}
             <Box className="hdr_rgt">
               <Box className="cart_icon">
                 <Badge color="primary" variant="dot">
@@ -187,9 +200,7 @@ export default function Header() {
                 </CustomButtonPrimary>
               ) : (
                 <>
-                  <Typography>
-                    
-                  </Typography>
+                  <Typography></Typography>
                   <CustomButtonPrimary
                     type="submit"
                     variant="contained"
