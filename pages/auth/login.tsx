@@ -83,7 +83,7 @@ const Login = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      router.push("/auth/profile");
+      router.push("/profile");
     }
   }, [isLoggedIn]);
 

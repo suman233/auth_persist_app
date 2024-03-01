@@ -7,9 +7,12 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 const Profile = () => {
-  const { isLoading, data } = useQuery({
+  const usertoken = getCookie("token");
+
+  const { data } = useQuery({
     queryKey: ["profiledetails"],
-    queryFn: GetProfileDetails
+    queryFn: GetProfileDetails,
+    enabled: !!usertoken
   });
   console.log("profile", data);
 
@@ -22,10 +25,10 @@ const Profile = () => {
   // console.log("token", usertoken);
 
   useEffect(() => {
-    const usertoken = getCookie("token");
-
-    if (usertoken) return data?.data?.data;
-  }, [data?.data, data?.status]);
+    if (usertoken) {
+      // refetch();
+    }
+  }, [usertoken]);
 
   return (
     <Container sx={{ my: 4 }}>

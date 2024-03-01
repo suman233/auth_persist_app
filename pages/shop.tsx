@@ -1,6 +1,18 @@
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
+const obj = {
+  name: "hyper",
+  avail: {
+    key1: "value1",
+    key2: "value2",
+    key3: "value3",
+    key4: "value4"
+  }
+};
+const keys = Object.keys(obj.avail);
+console.log("obj contains " + keys.length + " keys: " + keys);
+
 const Shop = () => {
   const [paramsTextFields, setParamsTextFields] = useState([0]);
 
