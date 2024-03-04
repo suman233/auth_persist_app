@@ -72,9 +72,9 @@ const Login = () => {
             }
           }
         },
-        onError: (err) => {
-          if (err) {
-            toast.error(err.message);
+        onError: (err: any) => {
+          if (err.response.data.status===400) {
+            toast.error(err.response.data.message);
           }
         }
       }

@@ -16,19 +16,17 @@ const Profile = () => {
   });
   console.log("profile", data);
 
-  if (data?.status === 200) {
-    toast.success(data.data.message);
-  }
+  
 
   // const usertoken = data?.config.headers['x-access-token']
 
   // console.log("token", usertoken);
 
   useEffect(() => {
-    if (usertoken) {
-      // refetch();
+    if (data?.status === 200) {
+      toast.success(data.data.message);
     }
-  }, [usertoken]);
+  }, [data?.status]);
 
   return (
     <Container sx={{ my: 4 }}>

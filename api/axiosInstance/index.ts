@@ -1,5 +1,6 @@
 import axios from "axios";
 import { baseUrlApi } from "../endpoints";
+import { getCookie } from "cookies-next";
 // import { refreshAccessToken } from "../functions/user.api";
 
 const axiosInstance = axios.create({
@@ -12,7 +13,8 @@ export const setUserAccessToken = (_accessToken: typeof accessToken) => {
   accessToken = _accessToken;
 };
 export const getUserAccessToken = () => {
-  return accessToken;
+  const getProfileToken= getCookie('token')
+  return accessToken || getProfileToken;
 };
 
 let refreshToken: string | null = null;

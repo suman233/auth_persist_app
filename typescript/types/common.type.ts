@@ -47,6 +47,7 @@ export type userData = {
   // cover_picture?: string;
 }
 
-
-
+export type profileData = {
+  data: userData
+}
 export {};

@@ -108,13 +108,12 @@ export default function Header() {
   // });
   // console.log("profile", data);
   const usertoken = getCookie("token");
-  console.log("urtoken", usertoken);
+  // console.log("urtoken", usertoken);
 
   React.useEffect(() => {
     setIsLoggedIn(!!usertoken);
   }, [usertoken]);
 
-  React.useEffect(() => {}, [usertoken]);
 
   return (
     <HeaderWrap sx={{ display: "flex" }} className="main_head">
@@ -140,7 +139,7 @@ export default function Header() {
             </Link>
             {loggedIn ? (
               <>
-                <Box
+                {/* <Box
                   sx={{ display: { xs: "none", sm: "block" } }}
                   className="navbar"
                 >
@@ -148,21 +147,24 @@ export default function Header() {
                     type="button"
                     variant="contained"
                     color="primary"
-                    // onClick={()=>router.push('/auth/profile')}
+                    onClick={()=>router.push('/profile')}
                   >
                     <span>User</span>
                   </CustomButtonPrimary>
-                </Box>
-                {/* <Box>
+                </Box> */}
+                <Box
+                  sx={{ display: { xs: "none", sm: "block" } }}
+                  className="navbar"
+                  >
                   <CustomButtonPrimary
                     type="button"
                     variant="contained"
                     color="primary"
-                    onClick={()=>router.push('/auth/profile')}
+                    onClick={()=>router.push('/profile')}
                   >
-                    <span>{data?.data?.data.first_name}</span>
+                    <span>{userData?.data?.first_name}</span>
                   </CustomButtonPrimary>
-                </Box> */}
+                </Box>
               </>
             ) : (
               <Box

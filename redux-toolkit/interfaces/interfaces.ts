@@ -1,8 +1,8 @@
-import { userData } from "@/types/common.type";
+import { profileData, userData } from "@/types/common.type";
 
 export interface userSliceData {
   isLoggedIn: boolean;
-  userData: userData | null;
+  userData: profileData | null;
   accessToken: null | string;
 }
 

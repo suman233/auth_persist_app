@@ -1,27 +1,22 @@
-
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 // import { destroyCookie } from "nookies";
-import { userSliceData } from "../interfaces/interfaces";
 import { setUserAccessToken } from "api/axiosInstance";
-import { deleteCookie, getCookie, setCookie } from "cookies-next";
-import { HYDRATE } from "next-redux-wrapper";
-
-export interface IuserData {
-  email: string;
-  password: string;
-}
+import { deleteCookie } from "cookies-next";
+import { userSliceData } from "../interfaces/interfaces";
+import { profileData } from "@/types/common.type";
+// import { HYDRATE } from "next-redux-wrapper";
 
 const initialState: userSliceData = {
   isLoggedIn: false,
   userData: null,
-  accessToken: null,
+  accessToken: null
 };
 
 export const userSlice = createSlice({
   name: "userSlice",
   initialState,
   reducers: {
-    setUserData: (state, { payload }: { payload: IuserData }) => {
+    setUserData: (state, { payload }: { payload: profileData }) => {
       state.userData = payload;
     },
     setAccessToken: (state, { payload }: { payload: string | null }) => {
@@ -30,13 +25,12 @@ export const userSlice = createSlice({
       setUserAccessToken(payload);
     },
     logout: (state) => {
-
       state.isLoggedIn = false;
       state.userData = null;
       state.accessToken = null;
-      deleteCookie("token")
+      deleteCookie("token");
     }
-  },
+  }
   // extraReducers: {
   //   [HYDRATE]: (state, { payload }) => {
   //     return {
@@ -47,7 +41,6 @@ export const userSlice = createSlice({
   // },
 });
 
-export const { setUserData, logout, setAccessToken } =
-  userSlice.actions;
+export const { setUserData, logout, setAccessToken } = userSlice.actions;
 
 export default userSlice.reducer;
